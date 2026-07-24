@@ -136,3 +136,19 @@
     to { transform: translateX(-50%); }
 }
 .animate-marquee { animation: marquee 32s linear infinite; }
+
+@keyframes cursor-ripple {
+    0% { width: 12px; height: 12px; opacity: 0.7; }
+    100% { width: 90px; height: 90px; opacity: 0; }
+}
+
+html.custom-cursor,
+html.custom-cursor * {
+    cursor: none !important;
+}
+@media (pointer: coarse) {
+    html.custom-cursor,
+    html.custom-cursor * {
+        cursor: auto !important;
+    }
+}

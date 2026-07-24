@@ -7,6 +7,7 @@ import SmoothScroll from "./lib/SmoothScroll";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import AudioToggle from "./components/AudioToggle";
+import SonarCursor from "./components/SonarCursor";
 import Landing from "./pages/Landing";
 
 const DigitalTwin = lazy(() => import("./pages/DigitalTwin"));
@@ -70,6 +71,7 @@ function App() {
         </SmoothScroll>
       </BrowserRouter>
       <AudioToggle />
+      <SonarCursor />
     </div>
   );
 }

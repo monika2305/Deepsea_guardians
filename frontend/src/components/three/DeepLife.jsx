@@ -1,6 +1,7 @@
 import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { getFishGeometry } from "./fishGeometry";
 
 // shared sonar flash: brightens/nudges a mesh as the pulse ring passes it
 function sonarFlash(sonarRef, clock, dist) {
@@ -21,6 +22,7 @@ export function School({ count = 40, color = "#00f0ff", center = [0, 0, -2], spr
   const mesh = useRef();
   const cur = useCursor(cursorRef);
   const dummy = useMemo(() => new THREE.Object3D(), []);
+  const fishGeo = useMemo(() => getFishGeometry(), []);
   const data = useMemo(
     () => Array.from({ length: count }, () => ({ r: 0.6 + Math.random() * spread, sp: 0.3 + Math.random() * 0.5, off: Math.random() * 6.28, y: (Math.random() - 0.5) * spread, ph: Math.random() * 6.28 })),
     [count, spread]
@@ -35,8 +37,9 @@ export function School({ count = 40, color = "#00f0ff", center = [0, 0, -2], spr
       const z = center[2] + Math.sin(a) * d.r;
       const y = center[1] + d.y + Math.sin(t * 2 + d.ph) * 0.35 - cur.current.y * 0.6;
       dummy.position.set(x, y, z);
-      dummy.rotation.set(0, -a + Math.PI / 2, Math.sin(t * 3 + d.ph) * 0.4);
-      dummy.scale.setScalar(size);
+      // fish nose = +Z ; heading tangent of circular path
+      dummy.rotation.set(Math.sin(t * 4 + d.ph) * 0.12, -a, Math.sin(t * 6 + d.ph) * 0.22);
+      dummy.scale.set(size, size, size * 1.15);
       dummy.updateMatrix();
       mesh.current.setMatrixAt(i, dummy.matrix);
     });
@@ -45,9 +48,8 @@ export function School({ count = 40, color = "#00f0ff", center = [0, 0, -2], spr
     mesh.current.material.emissiveIntensity = 0.35 + f * 1.6;
   });
   return (
-    <instancedMesh ref={mesh} args={[null, null, count]}>
-      <coneGeometry args={[0.4, 1.2, 5]} />
-      <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.35} roughness={0.4} />
+    <instancedMesh ref={mesh} args={[fishGeo, null, count]}>
+      <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.35} roughness={0.4} metalness={0.15} />
     </instancedMesh>
   );
 }

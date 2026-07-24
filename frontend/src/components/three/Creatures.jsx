@@ -1,6 +1,7 @@
 import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { getFishGeometry } from "./fishGeometry";
 
 // Blue whale: crosses the screen slowly on a long loop
 export function Whale() {
@@ -96,6 +97,7 @@ export function Dolphins() {
 export function FishSchool({ count = 60, color = "#00f0ff", center = [-6, -2, -2] }) {
   const mesh = useRef();
   const dummy = useMemo(() => new THREE.Object3D(), []);
+  const fishGeo = useMemo(() => getFishGeometry(), []);
   const data = useMemo(
     () =>
       Array.from({ length: count }, () => ({
@@ -117,9 +119,8 @@ export function FishSchool({ count = 60, color = "#00f0ff", center = [-6, -2, -2
       const z = center[2] + Math.sin(a) * d.r;
       const y = center[1] + d.yOff + Math.sin(t * 2 + d.phase) * 0.4;
       dummy.position.set(x, y, z);
-      dummy.rotation.y = -a + Math.PI / 2;
-      dummy.rotation.z = Math.sin(t * 3 + d.phase) * 0.4;
-      dummy.scale.setScalar(0.55);
+      dummy.rotation.set(Math.sin(t * 4 + d.phase) * 0.12, -a, Math.sin(t * 6 + d.phase) * 0.22);
+      dummy.scale.set(0.5, 0.5, 0.58);
       dummy.updateMatrix();
       mesh.current.setMatrixAt(i, dummy.matrix);
     });
@@ -127,9 +128,8 @@ export function FishSchool({ count = 60, color = "#00f0ff", center = [-6, -2, -2
   });
 
   return (
-    <instancedMesh ref={mesh} args={[null, null, count]}>
-      <coneGeometry args={[0.4, 1.2, 5]} />
-      <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.6} roughness={0.4} />
+    <instancedMesh ref={mesh} args={[fishGeo, null, count]}>
+      <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.55} roughness={0.4} metalness={0.15} />
     </instancedMesh>
   );
 }
