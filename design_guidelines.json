@@ -1,0 +1,142 @@
+{
+  "theme_and_atmosphere": {
+    "concept": "DeepSea Guardian - Cinematic, immersive, Awwwards-level 3D experience. BBC Blue Planet / OceanX level realism mixed with high-tech AI HUD.",
+    "emotional_tone": "Mysterious, Awe-inspiring, Scientific Precision, Hopeful (Restoration).",
+    "theme": "dark"
+  },
+  "typography": {
+    "fonts": {
+      "headings": {
+        "family": "Fraunces, serif",
+        "description": "Large editorial headings for cinematic impact. Used for Landing hero, section titles."
+      },
+      "body": {
+        "family": "Inter, sans-serif",
+        "description": "Clean, highly readable sans-serif for UI elements, descriptions, and standard text."
+      },
+      "technical": {
+        "family": "JetBrains Mono, monospace",
+        "description": "Used for data readouts, coordinates, AI metrics, and timeline numbers."
+      }
+    },
+    "scale": {
+      "h1": "text-6xl md:text-7xl lg:text-[7vw] leading-none tracking-tighter",
+      "h2": "text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight",
+      "h3": "text-2xl md:text-3xl lg:text-4xl leading-snug",
+      "body_large": "text-lg md:text-xl leading-relaxed text-slate-300",
+      "body_standard": "text-base leading-relaxed text-slate-300",
+      "technical_large": "text-2xl md:text-3xl font-mono tracking-tight",
+      "technical_small": "text-xs md:text-sm font-mono tracking-[0.2em] uppercase"
+    }
+  },
+  "colors": {
+    "background_gradient": "bg-gradient-to-b from-[#020617] via-[#041B2D] to-[#062C43]",
+    "tokens": {
+      "deep_navy": { "hex": "#020617", "hsl": "229, 84%, 5%" },
+      "ocean_blue": { "hex": "#041B2D", "hsl": "206, 83%, 10%" },
+      "abyss_blue": { "hex": "#062C43", "hsl": "203, 83%, 14%" },
+      "turquoise": { "hex": "#14B8A6", "hsl": "173, 80%, 40%" },
+      "bioluminescent_cyan": { "hex": "#00F0FF", "hsl": "184, 100%, 50%" },
+      "sea_green": { "hex": "#10B981", "hsl": "160, 84%, 39%" },
+      "amber": { "hex": "#F59E0B", "hsl": "38, 92%, 50%" },
+      "coral_red": { "hex": "#F43F5E", "hsl": "350, 89%, 60%" },
+      "glass_white": { "hex": "#FFFFFF", "hsl": "0, 0%, 100%" }
+    }
+  },
+  "glassmorphism_recipes": {
+    "premium_glass_panel": "bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] saturate-150 rounded-2xl",
+    "floating_nav": "bg-slate-900/40 backdrop-blur-xl border border-white/10 shadow-lg rounded-full px-6 py-3",
+    "ai_hud_glass": "bg-[#062C43]/40 backdrop-blur-md border border-[#00F0FF]/30 shadow-[0_0_15px_rgba(0,240,255,0.1)] rounded-xl"
+  },
+  "motion_tokens": {
+    "micro": "duration-150 ease-out",
+    "standard": "duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]",
+    "scene_transition": "duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)]",
+    "gsap_scroll": "Lenis for smooth scrolling, GSAP ScrollTrigger for pinning and 3D camera timeline.",
+    "signature_reveal": "Masked line-by-line reveal using Framer Motion (y: '100%', opacity: 0 -> y: 0, opacity: 1, stagger: 0.1s) and overflow-hidden on parent."
+  },
+  "components": {
+    "buttons": {
+      "primary": "rounded-full bg-transparent border-2 border-white/20 px-8 py-4 text-sm font-medium tracking-[0.2em] uppercase hover:bg-white/10 hover:border-white transition-all duration-400 relative overflow-hidden group",
+      "glow_cta": "rounded-full bg-[#00F0FF]/10 border border-[#00F0FF]/50 px-8 py-4 text-sm font-medium tracking-[0.2em] uppercase text-[#00F0FF] shadow-[0_0_20px_rgba(0,240,255,0.2)] hover:bg-[#00F0FF]/20 transition-all duration-400"
+    },
+    "data_readouts": {
+      "container": "flex flex-col gap-1",
+      "label": "font-mono text-[10px] text-slate-400 uppercase tracking-[0.3em]",
+      "value": "font-mono text-2xl text-white font-light tracking-tight"
+    },
+    "timeline": {
+      "track": "h-[2px] bg-white/10 w-full relative",
+      "node": "w-3 h-3 rounded-full bg-[#00F0FF] absolute top-1/2 -translate-y-1/2 cursor-pointer shadow-[0_0_10px_rgba(0,240,255,0.5)]",
+      "active_line": "h-[2px] bg-gradient-to-r from-[#00F0FF] to-transparent absolute top-0 left-0"
+    },
+    "sliders": {
+      "track": "h-1 bg-white/10 rounded-full",
+      "fill": "h-full bg-gradient-to-r from-turquoise to-sea_green rounded-full",
+      "thumb": "w-4 h-4 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)] cursor-grab active:cursor-grabbing"
+    }
+  },
+  "layouts": {
+    "page_structure": "Multi-page immersive experience. Scroll-driven sections acting as scenes. Uses an absolute/fixed 3D canvas background (React Three Fiber) with standard HTML/Tailwind DOM overlaid using pointer-events-none on containers and pointer-events-auto on interactive UI.",
+    "grids": {
+      "magazine": "grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 px-6 md:px-12 lg:px-24 py-24",
+      "hud_overlay": "absolute inset-0 p-8 flex flex-col justify-between"
+    },
+    "spacing": "Generous. p-8, p-12, p-24. Large negative space to allow the 3D marine models and volumetric lighting to breathe."
+  },
+  "imagery_and_textures": {
+    "image_urls": [
+      {
+        "category": "placeholder_ui_texture",
+        "url": "https://images.pexels.com/photos/3555441/pexels-photo-3555441.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Bioluminescent jellyfish texture, use for blending in AI explainability panels or subtle background grain."
+      },
+      {
+        "category": "placeholder_ui_texture_2",
+        "url": "https://images.pexels.com/photos/24376492/pexels-photo-24376492.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Dark underwater blue tone, can be used for fallback background if WebGL fails."
+      }
+    ],
+    "icons": "Use 'lucide-react' for crisp, technical HUD icons (e.g., Target, Activity, Zap, Droplet, Radio). No generic SVGs. Stroke width 1.5px.",
+    "textures": "Use subtle noise/grain overlay (mix-blend-overlay, opacity 10-15%) over the entire page to give it a cinematic, underwater camera feel."
+  },
+  "three_d_libraries_and_steps": {
+    "libraries": [
+      "@react-three/fiber",
+      "@react-three/drei",
+      "three",
+      "framer-motion",
+      "framer-motion-3d",
+      "gsap",
+      "@studio-freight/react-lenis"
+    ],
+    "steps": [
+      "1. Setup global Lenis for smooth scroll (crucial for scroll-driven animations).",
+      "2. Setup fixed <Canvas> in background, using R3F.",
+      "3. Use Drei's <Environment> for reflections, and <Caustics> + volumetric spot lights (with angle and penumbra) for the sun rays penetrating the water.",
+      "4. Implement marine snow using a custom particle system (InstancedMesh or Points with additive blending) drifting slowly upwards.",
+      "5. Use GSAP ScrollTrigger to tie the R3F camera position (y and z axes) to the window scroll position, simulating 'diving' through the 6 ocean layers.",
+      "6. Build the DOM UI layers (HTML over Canvas) using Framer Motion for entrance animations and the HUD glassmorphism styling."
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Prioritize Awwwards-level polish: Typography, generous spacing, and the interplay of glass UI over rich 3D backgrounds.",
+    "Do not use generic UI cards. Use the 'premium_glass_panel' or 'ai_hud_glass' recipes.",
+    "The 3D canvas must remain fixed in the background while HTML content scrolls.",
+    "Ensure high contrast for text (white/cyan) against the deep navy ocean backgrounds.",
+    "Add 'data-testid' to all interactive HUD buttons, timeline nodes, and navigation links.",
+    "All animations should feel fluid, oceanic, and cinematic (use the specified easing).",
+    "Never use `transparent` directly on components containing text. Always use a glassmorphism backdrop."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic outputs. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur).",
+    "You MUST NOT apply universal transition. Eg: transition: all. This results in breaking transforms.",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file.",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap."
+  ]
+}
